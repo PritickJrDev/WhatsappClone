@@ -15,6 +15,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -23,6 +24,21 @@ public class LoginActivity extends AppCompatActivity {
     private Button login, register;
 
     FirebaseAuth firebaseAuth;
+    FirebaseUser currentUser;
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        firebaseAuth = FirebaseAuth.getInstance();
+
+        //make user stay login unless sign out
+        if(currentUser != null){
+            Intent i = new Intent(LoginActivity.this, MainActivity.class);
+            startActivity(i);
+            finish();
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,8 +49,6 @@ public class LoginActivity extends AppCompatActivity {
         password = findViewById(R.id.editText3);
         login = findViewById(R.id.buttonLogin);
         register = findViewById(R.id.registerBtn);
-
-        firebaseAuth = FirebaseAuth.getInstance();
 
         register.setOnClickListener(new View.OnClickListener() {
             @Override
