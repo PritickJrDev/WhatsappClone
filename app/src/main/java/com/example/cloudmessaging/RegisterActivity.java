@@ -47,14 +47,15 @@ public class RegisterActivity extends AppCompatActivity {
         registerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(!TextUtils.isEmpty(usernameET.getText()) || !TextUtils.isEmpty(passwordET.getText())
-                || !TextUtils.isEmpty(emailET.getText())){
+                if(!TextUtils.isEmpty(usernameET.getText().toString()) || !TextUtils.isEmpty(passwordET.getText().toString())
+                || !TextUtils.isEmpty(emailET.getText().toString())){
                     registerNow(usernameET.getText().toString(), passwordET.getText().toString(), emailET.getText().toString());
                 } else {
                     Toast.makeText(RegisterActivity.this, "Enter all details", Toast.LENGTH_SHORT).show();
                 }
             }
         });
+
 
     }
 
@@ -83,6 +84,8 @@ public class RegisterActivity extends AppCompatActivity {
                                 i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                                 startActivity(i);
                                 finish();
+                            } else {
+                                Toast.makeText(RegisterActivity.this,"Something went wrong!",Toast.LENGTH_SHORT).show();
                             }
                         }
                     });
