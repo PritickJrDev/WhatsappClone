@@ -12,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.cloudmessaging.MessageActivity;
 import com.example.cloudmessaging.R;
 import com.example.cloudmessaging.model.Users;
 
@@ -77,15 +78,15 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
 
 
 
-//        holder.itemView.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent i = new Intent(context, MessageActivity.class);
-//                i.putExtra("userid", users.getId());
-//                context.startActivity(i);
-//
-//            }
-//        });
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(context, MessageActivity.class);
+                i.putExtra("userid", users.getId());
+                context.startActivity(i);
+
+            }
+        });
 
 
 
