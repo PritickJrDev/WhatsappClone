@@ -49,6 +49,8 @@ public class MessageActivity extends AppCompatActivity {
         messageText = findViewById(R.id.text_send);
         sendMessageBtn = findViewById(R.id.btn_send);
 
+
+
         intent = getIntent();
         userID = intent.getStringExtra("userid");
 
@@ -85,6 +87,7 @@ public class MessageActivity extends AppCompatActivity {
                 } else {
                     Toast.makeText(MessageActivity.this,"cant send",Toast.LENGTH_SHORT).show();
                 }
+                messageText.setText("");
             }
         });
     }
