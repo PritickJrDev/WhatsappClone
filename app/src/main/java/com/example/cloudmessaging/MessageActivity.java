@@ -5,8 +5,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.cloudmessaging.model.Users;
@@ -18,6 +23,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.HashMap;
+
 public class MessageActivity extends AppCompatActivity {
 
     ImageView imageProfile;
@@ -28,6 +35,9 @@ public class MessageActivity extends AppCompatActivity {
     Intent intent;
     String userID;
 
+    EditText messageText;
+    ImageButton sendMessageBtn;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +46,8 @@ public class MessageActivity extends AppCompatActivity {
 
         imageProfile = findViewById(R.id.imageview_profile);
         username = findViewById(R.id.username);
+        messageText = findViewById(R.id.text_send);
+        sendMessageBtn = findViewById(R.id.btn_send);
 
         intent = getIntent();
         userID = intent.getStringExtra("userid");
@@ -63,5 +75,28 @@ public class MessageActivity extends AppCompatActivity {
 
             }
         });
+
+        sendMessageBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String msg = messageText.getText().toString().trim();
+                if(!msg.isEmpty()){
+                    sendMessage(firebaseUser.getUid(), userID, msg);
+                } else {
+                    Toast.makeText(MessageActivity.this,"cant send",Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+    }
+
+    private void sendMessage(String sender, String receiver, String msg) {
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
+
+        HashMap<String, Object> map = new HashMap<>();
+        map.put("sender",sender);
+        map.put("receiver",receiver);
+        map.put("message",msg);
+
+        databaseReference.child("Chats").push().setValue(map);
     }
 }
