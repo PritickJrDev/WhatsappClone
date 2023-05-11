@@ -65,9 +65,6 @@ public class MessageActivity extends AppCompatActivity {
         linearLayoutManager.setStackFromEnd(true);
         recyclerView.setLayoutManager(linearLayoutManager);
 
-
-
-
         intent = getIntent();
         userID = intent.getStringExtra("userid");
 
@@ -119,6 +116,25 @@ public class MessageActivity extends AppCompatActivity {
         map.put("message",msg);
 
         databaseReference.child("Chats").push().setValue(map);
+
+        //Adding user to chat fragments : latest chat
+        final DatabaseReference chatRef = FirebaseDatabase.getInstance().getReference("ChatList")
+                .child(firebaseUser.getUid())
+                .child(userID);
+
+        chatRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if(!snapshot.exists()){
+                    chatRef.child("id").setValue(userID);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
 
     private void readMessages(final String myId, final String userid, final String imageUrl){
