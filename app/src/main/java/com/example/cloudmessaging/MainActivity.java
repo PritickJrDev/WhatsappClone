@@ -14,6 +14,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.example.cloudmessaging.fragments.ProfileFragment;
 import com.example.cloudmessaging.fragments.UserFragment;
 import com.example.cloudmessaging.fragments.ChatsFragment;
 import com.example.cloudmessaging.model.Users;
@@ -44,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
 
         tabLayout.addTab(tabLayout.newTab().setText("Users"));
         tabLayout.addTab(tabLayout.newTab().setText("Chats"));
+        tabLayout.addTab(tabLayout.newTab().setText("Profile"));
 
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
 
@@ -123,6 +125,8 @@ public class MainActivity extends AppCompatActivity {
                 case 0 : return new UserFragment();
 
                 case 1 : return new ChatsFragment();
+
+                case 2 : return new ProfileFragment();
             }
             return null;
         }
