@@ -114,7 +114,7 @@ public class ProfileFragment extends Fragment {
 
     private void selectImage() {
         Intent i = new Intent();
-        i.setType("image/");
+        i.setType("image/*");
         i.setAction(Intent.ACTION_GET_CONTENT);
         startActivityForResult(i,IMAGE_REQUEST);
     }

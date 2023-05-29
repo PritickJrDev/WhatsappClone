@@ -31,6 +31,7 @@ public class LoginActivity extends AppCompatActivity {
         super.onStart();
 
         firebaseAuth = FirebaseAuth.getInstance();
+        currentUser = firebaseAuth.getCurrentUser();
 
         //make user stay login unless sign out
         if(currentUser != null){

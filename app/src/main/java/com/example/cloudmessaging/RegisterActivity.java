@@ -50,7 +50,8 @@ public class RegisterActivity extends AppCompatActivity {
                 if(!TextUtils.isEmpty(usernameET.getText().toString()) || !TextUtils.isEmpty(passwordET.getText().toString())
                 || !TextUtils.isEmpty(emailET.getText().toString())){
                     registerNow(usernameET.getText().toString(), passwordET.getText().toString(), emailET.getText().toString());
-                } else {
+                }
+                else {
                     Toast.makeText(RegisterActivity.this, "Enter all details", Toast.LENGTH_SHORT).show();
                 }
             }
@@ -90,7 +91,7 @@ public class RegisterActivity extends AppCompatActivity {
                         }
                     });
                 } else {
-                    Toast.makeText(RegisterActivity.this, "Invalid username or password", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(RegisterActivity.this, "Enter password with minimum 6 character", Toast.LENGTH_SHORT).show();
                 }
             }
         });

@@ -27,6 +27,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.HashMap;
+
 public class MainActivity extends AppCompatActivity {
 
     FirebaseUser firebaseUser;
@@ -137,4 +139,25 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    //checking user is online or offline
+    private void checkStatus(String status){
+        myRef = FirebaseDatabase.getInstance().getReference("MyUsers").child(firebaseUser.getUid());
+
+        HashMap<String, Object> hashMap = new HashMap<>();
+        hashMap.put("status",status);
+
+        myRef.updateChildren(hashMap);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        checkStatus("online");
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        checkStatus("offline");
+    }
 }

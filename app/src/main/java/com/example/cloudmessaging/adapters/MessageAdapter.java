@@ -71,17 +71,18 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
         }
 
 
-//        if (position == mChat.size() -1){
-//            if (chat.isIsseen()){
-//                holder.txt_seen.setText("Seen");
-//            }else{
-//                holder.txt_seen.setText("Delivered");
-//            }
-//        }
-//        else
-//        {
-//            holder.txt_seen.setVisibility(View.GONE);
-//        }
+        //checking if user last recent message is seen or not
+        if (position == mChat.size() -1){
+            if (chat.isIsSeen()){
+                holder.txt_seen.setText("Seen");
+            }else{
+                holder.txt_seen.setText("Delivered");
+            }
+        }
+        else
+        {
+            holder.txt_seen.setVisibility(View.GONE);
+        }
 
     }
 

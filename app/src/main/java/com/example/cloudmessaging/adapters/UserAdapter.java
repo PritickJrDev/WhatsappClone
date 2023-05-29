@@ -59,21 +59,21 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
 
 
         // Status check
-//        if (isChat){
-//
-//            if(users.getStatus().equals("online")){
-//                holder.imageViewON.setVisibility(View.VISIBLE);
-//                holder.imageViewOFF.setVisibility(View.GONE);
-//            }else{
-//
-//                holder.imageViewON.setVisibility(View.GONE);
-//                holder.imageViewOFF.setVisibility(View.VISIBLE);
-//            }
-//        }else{
-//
-//            holder.imageViewON.setVisibility(View.GONE);
-//            holder.imageViewOFF.setVisibility(View.GONE);
-//        }
+        if (isChat){
+
+            if(users.getStatus().equals("online")){
+                holder.imageViewON.setVisibility(View.VISIBLE);
+                holder.imageViewOFF.setVisibility(View.GONE);
+            }else{
+
+                holder.imageViewON.setVisibility(View.GONE);
+                holder.imageViewOFF.setVisibility(View.VISIBLE);
+            }
+        }else{
+
+            holder.imageViewON.setVisibility(View.GONE);
+            holder.imageViewOFF.setVisibility(View.GONE);
+        }
 
 
 
@@ -111,8 +111,8 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
 
             username = itemView.findViewById(R.id.textView30);
             imageView = itemView.findViewById(R.id.imageView);
-            imageViewON = itemView.findViewById(R.id.statusimageON);
-            imageViewOFF = itemView.findViewById(R.id.statusimageOFF);
+            imageViewON = itemView.findViewById(R.id.statusImageON);
+            imageViewOFF = itemView.findViewById(R.id.statusImageOFF);
 
 
         }
