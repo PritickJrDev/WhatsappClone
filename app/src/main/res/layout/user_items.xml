@@ -54,7 +54,7 @@
         app:layout_constraintHorizontal_bias="5.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/gradient_registter" />
+        app:srcCompat="@drawable/gradient_login" />
 
     <ImageView
         android:id="@+id/statusImageOFF"
